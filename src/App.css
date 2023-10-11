@@ -1,38 +1,63 @@
-.App {
-  text-align: center;
+.menuHeading{
+  font-size: 0.8rem;
+  color: #979797;
+  margin-bottom: 1rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.menuContent{
+  color: #797676;
+  font-size: 0.8rem;
+  font-weight: 500;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.logoImage{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.profileImage{
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background-color: blue;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cardWidget{
+  height: 3rem;
+  width: 3rem;
+  border-radius: 20%;
+  /* background-color: rgb(192, 164, 233); */
+}
+
+.iconDiv{
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.userWelcom{
+  font-size: 0.5rem;
+  color: #979797;
+}
+.cardTitle{
+  font-size: 0.6rem;
+  /* color: #797676; */
+}
+.cardNumber{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.userName{
+  font-size: 0.8rem;
+  color: #797676;
+}
+.reactIcon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.custom-card {
+  flex: 1; /* Each card takes up an equal amount of space */
+  margin: 8px; /* Add some margin between cards for spacing */
 }
