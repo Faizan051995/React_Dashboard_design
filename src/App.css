@@ -61,3 +61,15 @@
   flex: 1; /* Each card takes up an equal amount of space */
   margin: 8px; /* Add some margin between cards for spacing */
 }
+.container1 {
+  display: flex ;
+  align-items: center;
+  justify-content: center;
+  height: 150%;
+}
+
+.chart-container1 {
+  flex: 1;
+  height: 400px; /* Increase the chart height as needed */
+  width: 300px; /* Increase the chart width as needed */
+}

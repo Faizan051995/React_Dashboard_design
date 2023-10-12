@@ -29,7 +29,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { faker } from "@faker-js/faker";
 
 function DashboardWidget() {
   const twoColors = {
@@ -98,44 +97,8 @@ function DashboardWidget() {
     {
       title: 'Member',
       dataIndex: 'name',
-      filters: [
-        {
-          text: 'Joe',
-          value: 'Joe',
-        },
-        {
-          text: 'Category 1',
-          value: 'Category 1',
-          children: [
-            {
-              text: 'Yellow',
-              value: 'Yellow',
-            },
-            {
-              text: 'Pink',
-              value: 'Pink',
-            },
-          ],
-        },
-        {
-          text: 'Category 2',
-          value: 'Category 2',
-          children: [
-            {
-              text: 'Green',
-              value: 'Green',
-            },
-            {
-              text: 'Black',
-              value: 'Black',
-            },
-          ],
-        },
-      ],
-      filterMode: 'tree',
-      filterSearch: true,
-      onFilter: (value, record) => record.name.includes(value),
-      width: '30%',
+      width: '20%',
+      sorter: (a, b) => a.name - b.name,
     },
     {
       title: 'Clock-in',
@@ -145,45 +108,88 @@ function DashboardWidget() {
     {
       title: 'Active Time(hrs)',
       dataIndex: 'address',
-      filters: [
-        {
-          text: 'London',
-          value: 'London',
-        },
-        {
-          text: 'New York',
-          value: 'New York',
-        },
-      ],
-      onFilter: (value, record) => record.address.startsWith(value),
-      filterSearch: true,
-      width: '40%',
+      sorter: (a, b) => a.address - b.address,
+      //width: '20%',
+    },
+    {
+      title: 'Log time (hrs)',
+      dataIndex: 'logtime',
+      sorter: (a, b) => a.logtime - b.logtime,
+    },
+    {
+      title: 'Breake time (hrs)',
+      dataIndex: 'breaktime',
+      sorter: (a, b) => a.breaktime - b.breaktime,
+    },
+    {
+      title: 'Clock out ',
+      dataIndex: 'clockout',
+      sorter: (a, b) => a.clockout - b.clockout,
+    },
+    {
+      title: 'Remaining time ',
+      dataIndex: 'remainingtime',
+      
+      render: (_, record) => (
+        <>
+          <Button type="primary" size="small">
+            {record.remainingtime}
+          </Button>
+        </>
+      ),
+      sorter: (a, b) => a.remainingtime - b.remainingtime,
     },
   ];
   const tabledata = [
     {
       key: '1',
-      name: 'John Brown',
+      name: 'Priya Patel',
       age: "7:00Am",
-      address: 'New York No. 1 Lake Park',
+      address: '5:20',
+      logtime:"05:20",
+      breaktime:"0:02",
+      clockout:"07:10AM ",
+      remainingtime:"05:20"
     },
     {
       key: '2',
-      name: 'Jim Green',
-      age: "N/A",
-      address: 'London No. 1 Lake Park',
+      name: 'Mohamad Osama',
+      age: "NA",
+      address: 'NA',
+      logtime:"NA",
+      breaktime:"NA",
+      clockout:"NA",
+      remainingtime:"NA"
     },
     {
       key: '3',
-      name: 'Joe Black',
+      name: 'Danish',
       age: "7:00Am",
-      address: 'Sydney No. 1 Lake Park',
+      address: '3:02',
+      logtime:"3:02",
+      breaktime:"0:44",
+      clockout:"11:20AM ",
+      remainingtime:"10:33"
     },
     {
       key: '4',
-      name: 'Jim Red',
+      name: 'Basit',
       age: "7:00Am",
-      address: 'London No. 2 Lake Park',
+      address: '11:22',
+      logtime:"11:22",
+      breaktime:"0:22",
+      clockout:"11:50AM ",
+      remainingtime:"03:02"
+    },
+    {
+      key: '5',
+      name: 'Azhar',
+      age: "7:00Am",
+      address: 'NA',
+      logtime:"05:20",
+      breaktime:"0:02",
+      clockout:"07:10AM ",
+      remainingtime:"05:20"
     },
   ];
 
@@ -196,37 +202,28 @@ function DashboardWidget() {
     Legend
   );
   
-   const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
+  const data = {
+    labels: ['Arham', 'Danish', 'Azhar', 'Arham', 'Danish'],
+    datasets: [
+      {
+        data: [12, 10, 8, 6, 4, 0],
+        //data: dataValues,
+        backgroundColor: '#1677ff',
+        borderColor: '#1677ff',
+        borderWidth: 1,
       },
-      title: {
-        display: true,
-        text: 'Chart.js Bar Chart',
+    ],
+  };
+  
+  const options = {
+    scales: {
+      x: {
+        beginAtZero: true,
       },
     },
   };
   
-  const labels = ['Arham', 'Danish', 'Azhar', 'April','Arham', 'Danish',];
   
-   const data = {
-    labels,
-    datasets: [
-      // {
-      //   label: 'Dataset 1',
-      //   data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      //   backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      // },
-      {
-        label: 'Dataset 2',
-         data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-       // data: [0 , 4 , 6, 8, 12],
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
-      },
-    ],
-  };
   return (
     <div style={{ padding: "0 10px", marginTop: "2rem" }}>
       <div>
@@ -628,8 +625,12 @@ function DashboardWidget() {
                   )}
                 />
               </div>
-              <div style={{height:"300px", backgroundCoolor:"red", width:"100%"}}>
-              {/* <Bar style={{}} options={options} data={data} /> */}
+              <div style={{height:"300px", width:"100%",display:"flex",justifyContent:"center"}}>
+              <div className="container1">
+      <div className="chart-container1">
+        <Bar style={{height:"200px",}} data={data} options={options} />
+      </div>
+    </div>
               </div>
             </Card>
           </Col>
