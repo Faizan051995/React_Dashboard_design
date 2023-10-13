@@ -27,8 +27,8 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
 
 function DashboardWidget() {
   const twoColors = {
@@ -91,45 +91,44 @@ function DashboardWidget() {
       time: "2:30",
       color: "lightpink",
     },
-
   ];
   const columns = [
     {
-      title: 'Member',
-      dataIndex: 'name',
-      width: '20%',
+      title: "Member",
+      dataIndex: "name",
+      width: "20%",
       sorter: (a, b) => a.name - b.name,
     },
     {
-      title: 'Clock-in',
-      dataIndex: 'age',
+      title: "Clock-in",
+      dataIndex: "age",
       sorter: (a, b) => a.age - b.age,
     },
     {
-      title: 'Active Time(hrs)',
-      dataIndex: 'address',
+      title: "Active Time(hrs)",
+      dataIndex: "address",
       sorter: (a, b) => a.address - b.address,
       //width: '20%',
     },
     {
-      title: 'Log time (hrs)',
-      dataIndex: 'logtime',
+      title: "Log time (hrs)",
+      dataIndex: "logtime",
       sorter: (a, b) => a.logtime - b.logtime,
     },
     {
-      title: 'Breake time (hrs)',
-      dataIndex: 'breaktime',
+      title: "Breake time (hrs)",
+      dataIndex: "breaktime",
       sorter: (a, b) => a.breaktime - b.breaktime,
     },
     {
-      title: 'Clock out ',
-      dataIndex: 'clockout',
+      title: "Clock out ",
+      dataIndex: "clockout",
       sorter: (a, b) => a.clockout - b.clockout,
     },
     {
-      title: 'Remaining time ',
-      dataIndex: 'remainingtime',
-      
+      title: "Remaining time ",
+      dataIndex: "remainingtime",
+
       render: (_, record) => (
         <>
           <Button type="primary" size="small">
@@ -142,54 +141,54 @@ function DashboardWidget() {
   ];
   const tabledata = [
     {
-      key: '1',
-      name: 'Priya Patel',
+      key: "1",
+      name: "Priya Patel",
       age: "7:00Am",
-      address: '5:20',
-      logtime:"05:20",
-      breaktime:"0:02",
-      clockout:"07:10AM ",
-      remainingtime:"05:20"
+      address: "5:20",
+      logtime: "05:20",
+      breaktime: "0:02",
+      clockout: "07:10AM ",
+      remainingtime: "05:20",
     },
     {
-      key: '2',
-      name: 'Mohamad Osama',
+      key: "2",
+      name: "Mohamad Osama",
       age: "NA",
-      address: 'NA',
-      logtime:"NA",
-      breaktime:"NA",
-      clockout:"NA",
-      remainingtime:"NA"
+      address: "NA",
+      logtime: "NA",
+      breaktime: "NA",
+      clockout: "NA",
+      remainingtime: "NA",
     },
     {
-      key: '3',
-      name: 'Danish',
+      key: "3",
+      name: "Danish",
       age: "7:00Am",
-      address: '3:02',
-      logtime:"3:02",
-      breaktime:"0:44",
-      clockout:"11:20AM ",
-      remainingtime:"10:33"
+      address: "3:02",
+      logtime: "3:02",
+      breaktime: "0:44",
+      clockout: "11:20AM ",
+      remainingtime: "10:33",
     },
     {
-      key: '4',
-      name: 'Basit',
+      key: "4",
+      name: "Basit",
       age: "7:00Am",
-      address: '11:22',
-      logtime:"11:22",
-      breaktime:"0:22",
-      clockout:"11:50AM ",
-      remainingtime:"03:02"
+      address: "11:22",
+      logtime: "11:22",
+      breaktime: "0:22",
+      clockout: "11:50AM ",
+      remainingtime: "03:02",
     },
     {
-      key: '5',
-      name: 'Azhar',
+      key: "5",
+      name: "Azhar",
       age: "7:00Am",
-      address: 'NA',
-      logtime:"05:20",
-      breaktime:"0:02",
-      clockout:"07:10AM ",
-      remainingtime:"05:20"
+      address: "NA",
+      logtime: "05:20",
+      breaktime: "0:02",
+      clockout: "07:10AM ",
+      remainingtime: "05:20",
     },
   ];
 
@@ -201,20 +200,20 @@ function DashboardWidget() {
     Tooltip,
     Legend
   );
-  
+
   const data = {
-    labels: ['Arham', 'Danish', 'Azhar', 'Arham', 'Danish'],
+    labels: ["Arham", "Danish", "Azhar", "Arham", "Danish"],
     datasets: [
       {
         data: [12, 10, 8, 6, 4, 0],
         //data: dataValues,
-        backgroundColor: '#1677ff',
-        borderColor: '#1677ff',
+        backgroundColor: "#1677ff",
+        borderColor: "#1677ff",
         borderWidth: 1,
       },
     ],
   };
-  
+
   const options = {
     scales: {
       x: {
@@ -222,241 +221,140 @@ function DashboardWidget() {
       },
     },
   };
-  
-  
+
+  const widgetList = [
+    {
+      id: 1,
+      icon: (
+        <FaUserGroup size={20} style={{ color: "#809fff" }} />
+      ),
+      iconDivColor:"#bfcfff",
+      contentTitle: "Total Team Members",
+      contentNum:"10",
+      statsIcon: <FaArrowTrendUp />,
+      statsNum: "8.5%",
+      statsColor: "rgb(8, 206, 117)",
+      statsContent: "Up from yesterday"
+
+    },
+    {
+      id: 2,
+      icon: (
+        <IoCubeSharp size={20} style={{ color: "#ffa500" }} />
+      ),
+      iconDivColor:"rgb(250, 226, 166)",
+      contentTitle: "Active Members",
+      contentNum:"120",
+      statsIcon: <FaArrowTrendDown  />,
+      statsNum: "4.3%",
+      statsColor: "red",
+      statsContent: "Down from yesterday"
+
+    },
+    {
+      id: 3,
+      icon: (
+        <BsGraphUp size={20} style={{ color: "rgb(8, 206, 117)" }} />
+      ),
+      iconDivColor:"rgb(185, 239, 193)",
+      contentTitle: "On Break",
+      contentNum:"05",
+      statsIcon: <FaArrowTrendDown />,
+      statsNum: "4.3%",
+      statsColor: "red",
+      statsContent: "Down from yesterday"
+
+    },
+    {
+      id: 4,
+      icon: (
+        <IoCubeSharp size={20} style={{ color: "#ffa500" }} />
+      ),
+      iconDivColor:"rgb(250, 226, 166)",
+      contentTitle: "Clocked out Members",
+      contentNum:"10",
+      statsIcon: <FaArrowTrendDown />,
+      statsNum: "4.3%",
+      statsColor: "red",
+      statsContent: "Down from yesterday"
+
+    },
+    {
+      id: 5,
+      icon: (
+        <PiClockCounterClockwiseBold size={20} style={{ color: "rgb(237, 156, 124)" }} />
+      ),
+      iconDivColor: "rgb(241, 210, 198)",
+      contentTitle: "Yet to start members",
+      contentNum:"120",
+      statsIcon: <FaArrowTrendUp />,
+      statsNum: "8.5%",
+      statsColor: "rgb(8, 206, 117)",
+      statsContent: "Up from yesterday"
+
+    },
+  ];
+
   return (
-    <div style={{ padding: "0 10px", marginTop: "2rem" }}>
+    <div className="mainDiv" style={{ padding: "0 10px", marginTop: "2rem" }}>
       <div>
         <h4>Dashboard</h4>
       </div>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <Card size="small">
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <div>My Report</div>
+      <div className="secendWidget">
+        <div className="cardDiv">
+          <div className="cardWidget">
+            <div className="innercontent">My Report</div>
             <div>
               <Button type="primary">Team Report</Button>
             </div>
           </div>
-        </Card>
-        <Card size="small">
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <SlCalender />
-            <div>Today, 12, June</div>
+        </div>
+        <div className="cardDiv">
+          <div className="cardWidget">
+            <SlCalender type="large" style={{color:"gray",fontWeight:"bold"}}/>
+            <div className="innercontent">Today, 12, June</div>
             <div>
               <SlArrowLeft size={7} /> <SlArrowRight size={7} />
             </div>
           </div>
-        </Card>
+        </div>
       </div>
-      <div size="small">
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            paddingTop: "1rem",
-          }}
-        >
+      <div>
+        <div className="divRealTime">
           <div>Real-Time</div>
           <div>
-            <Button
-              type="primary"
-              style={{ display: "flex", alignItems: "center", gap: "5px" }}
-            >
+            <Button type="primary" className="divRealTimeButton">
               <AiFillEye style={{ gap: "10px" }} />
               View
             </Button>
           </div>
         </div>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          paddingTop: "1rem",
-          gap: "10px",
-        }}
-      >
-        <Card>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              cursor: "pointer",
-            }}
-          >
-            <div className="cardWidget" style={{ backgroundColor: "#bfcfff" }}>
-              <div className="reactIcon">
-                {" "}
-                <FaUserGroup
-                  size={20}
-                  display="center"
-                  style={{ color: "#809fff" }}
-                />
-              </div>
-            </div>
-            <div style={{}}>
-              <div className="cardTitle">Total Team Members</div>
-              <div className="cardNumber">10</div>
-            </div>
-          </div>
-          <div
-            className="cardTitle"
-            style={{ display: "flex", gap: "10px", paddingTop: "0.5rem" }}
-          >
-            <div style={{ color: "lightgreen" }}>
-              <FaArrowTrendUp />
-            </div>
-            <div style={{ color: "lightgreen" }}>8.5%</div>
-            <div style={{}}>Up from yesturday</div>
-          </div>
-        </Card>
 
-        <Card>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              cursor: "pointer",
-            }}
-          >
-            <div className="cardWidget" style={{ backgroundColor: "#fff1bf" }}>
-              <div className="reactIcon">
-                {" "}
-                <IoCubeSharp
-                  size={20}
-                  display="center"
-                  style={{ color: "#ffa500" }}
-                />
-              </div>
+      <div className="mainWidgetDiv">
+        {/* --------Widget----- */}
+        {widgetList.map((data)=>(
+        <div className="widgetDiv" key={data.id}>
+          <div className="innnerWidgetDiv">
+            <div className="widgetIcon" style={{backgroundColor: data.iconDivColor}}>
+              {data.icon}
             </div>
-            <div style={{}}>
-              <div className="cardTitle">Active Members</div>
-              <div className="cardNumber">120</div>
+            <div className="widgetContent">
+              <div className="widgetContentTitle">{data.contentTitle}</div>
+              <div className="widgetContentNum">{data.contentNum}</div>
             </div>
           </div>
-          <div
-            className="cardTitle"
-            style={{ display: "flex", gap: "10px", paddingTop: "0.5rem" }}
-          >
-            <div style={{ color: "red" }}>
-              <FaArrowTrendDown />
-            </div>
-            <div style={{ color: "red" }}>4.3%</div>
-            <div style={{}}>Down from yesturday</div>
+          <div className="widgetStatsDiv">
+            <span className="statsColor" style={{color: data.statsColor}}>
+              {data.statsIcon}
+              &nbsp;{data.statsNum}
+            </span>{" "}
+            {data.statsContent}
           </div>
-        </Card>
-
-        <Card>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              cursor: "pointer",
-            }}
-          >
-            <div className="cardWidget" style={{ backgroundColor: "#80ff80" }}>
-              <div className="reactIcon">
-                <BsGraphUp
-                  size={15}
-                  display="center"
-                  style={{ color: "#008000" }}
-                />
-              </div>
-            </div>
-            <div style={{}}>
-              <div className="cardTitle">On Break</div>
-              <div className="cardNumber">05</div>
-            </div>
-          </div>
-          <div
-            className="cardTitle"
-            style={{ display: "flex", gap: "10px", paddingTop: "0.5rem" }}
-          >
-            <div style={{ color: "red" }}>
-              <FaArrowTrendDown />
-            </div>
-            <div style={{ color: "red" }}>4.3%</div>
-            <div style={{}}>Down from yesturday</div>
-          </div>
-        </Card>
-
-        <Card>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              cursor: "pointer",
-            }}
-          >
-            <div className="cardWidget" style={{ backgroundColor: "#fff1bf" }}>
-              <div className="reactIcon">
-                {" "}
-                <IoCubeSharp
-                  size={20}
-                  display="center"
-                  style={{ color: "#ffa500" }}
-                />
-              </div>
-            </div>
-            <div style={{}}>
-              <div className="cardTitle">Clocked out Members</div>
-              <div className="cardNumber">10</div>
-            </div>
-          </div>
-          <div
-            className="cardTitle"
-            style={{ display: "flex", gap: "10px", paddingTop: "0.5rem" }}
-          >
-            <div style={{ color: "red" }}>
-              <FaArrowTrendDown />
-            </div>
-            <div style={{ color: "red" }}>4.3%</div>
-            <div style={{}}>Down from yesturday</div>
-          </div>
-        </Card>
-
-        <Card>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              cursor: "pointer",
-            }}
-          >
-            <div className="cardWidget" style={{ backgroundColor: "#ffc680" }}>
-              <div className="reactIcon">
-                {" "}
-                <PiClockCounterClockwiseBold
-                  size={20}
-                  display="center"
-                  style={{ color: "#ffa333" }}
-                />
-              </div>
-            </div>
-            <div style={{}}>
-              <div className="cardTitle">Total Team Members</div>
-              <div className="cardNumber">10</div>
-            </div>
-          </div>
-          <div
-            className="cardTitle"
-            style={{ display: "flex", gap: "10px", paddingTop: "0.5rem" }}
-          >
-            <div style={{ color: "lightgreen" }}>
-              <FaArrowTrendUp />
-            </div>
-            <div style={{ color: "lightgreen" }}>8.5%</div>
-            <div style={{}}>Up from yesturday</div>
-          </div>
-        </Card>
+        </div>
+        ))}
+        {/* --------------------- */}
       </div>
-
       <div style={{ display: "flex", paddingTop: "1rem" }}>
         <Row>
           <Col xs={24} sm={24} md={16} lg={16} style={{ paddingRight: "10px" }}>
@@ -491,7 +389,7 @@ function DashboardWidget() {
                     <div key={index} className="custom-card">
                       {/* Card content */}
                       <div>
-                        <Image src={natureImage} />
+                        <Image className="cardImage" src={natureImage} />
                       </div>
                       <div
                         style={{
@@ -625,21 +523,32 @@ function DashboardWidget() {
                   )}
                 />
               </div>
-              <div style={{height:"300px", width:"100%",display:"flex",justifyContent:"center"}}>
-              <div className="container1">
-      <div className="chart-container1">
-        <Bar style={{height:"200px",}} data={data} options={options} />
-      </div>
-    </div>
+              <div
+                style={{
+                  height: "300px",
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <div className="container1">
+                  <div className="chart-container1">
+                    <Bar
+                      style={{ height: "200px" }}
+                      data={data}
+                      options={options}
+                    />
+                  </div>
+                </div>
               </div>
             </Card>
           </Col>
         </Row>
-       
       </div>
-      <div style={{paddingTop:"1rem"}}>
+
+      <div style={{ paddingTop: "1rem" }}>
         <Table columns={columns} dataSource={tabledata} />;
-        </div>
+      </div>
     </div>
   );
 }

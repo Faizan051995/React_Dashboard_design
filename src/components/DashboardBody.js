@@ -1,4 +1,4 @@
-import { Button } from "antd";
+import { Button, Image } from "antd";
 import Search from "antd/es/input/Search";
 import React from "react";
 import {
@@ -8,6 +8,7 @@ import {
 import { AiFillSetting, AiOutlineUserAdd, AiOutlineDown } from "react-icons/ai";
 import { IoMdDownload } from "react-icons/io";
 import DashboardWidget from "./DashboardWidget";
+import profileImage from "../images/man.png"
 
 function DashboardBody() {
   return (
@@ -28,7 +29,7 @@ function DashboardBody() {
           <BsFillBellFill size={18} />
 
           <div style={{display:"flex",alignItems:"center",gap:"10px",cursor:"pointer"}}>
-            <div className="profileImage"></div>
+            <div className="profileImage"><img src={profileImage} height="70%" width="70%"/></div>
             <div style={{}}>
             <div className="userWelcom">Wellcome</div>
             <div className="userName">User Name <AiOutlineDown style={{alignItems:"center"}}/></div>

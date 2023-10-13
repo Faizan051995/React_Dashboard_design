@@ -1,68 +1,75 @@
-.menuHeading{
+.menuHeading {
   font-size: 0.8rem;
   color: #979797;
   margin-bottom: 1rem;
 }
 
-.menuContent{
+.menuContent {
   color: #797676;
   font-size: 0.8rem;
   font-weight: 500;
 }
 
-.logoImage{
+.logoImage {
   display: flex;
   justify-content: center;
 }
 
-.profileImage{
+.profileImage {
   height: 2rem;
   width: 2rem;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  padding-top: 2px;
+  justify-content: center;
   background-color: blue;
 }
 
-.cardWidget{
+
+.cardWidget {
   height: 3rem;
   width: 3rem;
   border-radius: 20%;
   /* background-color: rgb(192, 164, 233); */
 }
 
-.iconDiv{
+.iconDiv {
   display: flex;
   gap: 15px;
   align-items: center;
+  color: #797676;
 }
 
-.userWelcom{
+.userWelcom {
   font-size: 0.5rem;
   color: #979797;
 }
-.cardTitle{
-  font-size: 0.6rem;
+.cardTitle {
+  font-size: 0.7rem;
   /* color: #797676; */
 }
-.cardNumber{
+.cardNumber {
   font-size: 1.5rem;
   font-weight: 600;
 }
-.userName{
+.userName {
   font-size: 0.8rem;
   color: #797676;
 }
-.reactIcon{
+.reactIcon {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 100%;
 }
 .custom-card {
   flex: 1; /* Each card takes up an equal amount of space */
   margin: 8px; /* Add some margin between cards for spacing */
 }
 .container1 {
-  display: flex ;
+  display: flex;
   align-items: center;
   justify-content: center;
   height: 150%;
@@ -73,3 +80,227 @@
   height: 400px; /* Increase the chart height as needed */
   width: 300px; /* Increase the chart width as needed */
 }
+.divset {
+  display: flex;
+  justify-content: center;
+}
+.mainDiv {
+  padding: 0 10px;
+  margin-top: 2rem;
+}
+/* ------my Report card css------------- */
+.secendWidget {
+  display: flex;
+  justify-content: space-between;
+}
+.cardDiv{
+  background-color: white;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.cardWidget {
+  display: flex;
+  align-items: center;
+   gap: 10px;
+  width:100%; 
+}
+
+.innercontent{
+  color: gray;
+  font-weight: 600;
+}
+/* -------------------------------------- */
+
+.divRealTime {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 1rem;
+  color: gray;
+  font-weight: 600;
+}
+.divRealTimeButton {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ------------Widget Css----------- */
+.mainWidgetDiv{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.widgetDiv{
+  background-color: white;
+  border-radius: 5px;
+  padding: 15px;
+  width: 20%;
+  margin-top: 1rem;
+}
+
+.innnerWidgetDiv{
+  display: flex;
+  gap: 10px;
+}
+
+.widgetIcon{
+  /* background-color: #bfcfff; */
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.widgetContentTitle{
+  font-size: 0.7rem;
+  color: grey;
+}
+
+.widgetContentNum{
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.widgetStatsDiv{
+  font-size: 0.7rem;
+  color: grey;
+}
+.statsColor{
+  color: rgb(8, 206, 117);
+  font-weight: 600;
+}
+.logoImage img {
+  max-width: 100%;
+  height: auto;
+}
+
+.menuHeading {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.menuContent {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+.cardImage{
+  border-radius: 5px;
+}
+.custom-card{
+  background-color: #F5F5F5,
+}
+/* ---------responsive mode */
+
+/* styles.css */
+/* @media (max-width: 768px) {
+  .mainDiv {
+    padding: 0;
+    margin-top: 2rem;
+  }
+
+  .mainWidgetDiv {
+    flex-direction: column;
+  }
+
+  .custom-card {
+    width: 100%;
+  }
+
+  .widgetDiv {
+    width: 100%;
+  }
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard-header .top-section {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dashboard-header .top-section button {
+    margin-top: 10px;
+  }
+
+  .dashboard-header .top-section .ant-input-search {
+    width: 100%;
+  }
+
+  .dashboard-header .iconDiv {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .dashboard-header .iconDiv .profileImage {
+    margin-right: 0;
+  }
+
+  .dashboard-header .userWelcome {
+    margin-right: 0;
+  }
+  .menuContent {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+} */
+
+/* Responsive styles for screens with a maximum width of 768px */
+@media (max-width: 768px) {
+  .menuContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .menuHeading {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+
+  .logoImage img {
+    width: 100%;
+  }
+  .dashboard-header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .dashboard-header .top-section {
+    flex-direction: row;
+  }
+
+  .dashboard-header .top-section button {
+    width: auto;
+    margin-bottom: 0;
+  }
+
+  .dashboard-header .top-section .ant-input-search {
+    width: auto;
+  }
+
+  .dashboard-header .iconDiv {
+    flex-direction: row;
+  }
+
+  .dashboard-header .userWelcome {
+    margin-right: 10px;
+  }
+}
+
+
+/* ---------------------------- */
