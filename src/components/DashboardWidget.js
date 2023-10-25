@@ -10,11 +10,11 @@ import {
   Table,
   Tag,
 } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { SlCalender, SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import { AiFillEye, AiOutlineDown } from "react-icons/ai";
 import { IoCubeSharp } from "react-icons/io5";
-import { BsGraphUp } from "react-icons/bs";
+import { BsGraphUp, BsArrowDownUp } from "react-icons/bs";
 import { PiClockCounterClockwiseBold } from "react-icons/pi";
 import { FaUserGroup, FaArrowTrendUp, FaArrowTrendDown } from "react-icons/fa6";
 import natureImage from "../images/nature.jpg";
@@ -29,8 +29,41 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import { increment, decrement } from "../Redux/action";
+import { connect } from "react-redux";
 
-function DashboardWidget() {
+function DashboardWidget({ counter, increment, decrement }) {
+  //   const number=[2,3,6,8,9,12,13,14]
+  // const evenNumbers=number.filter((item)=>{
+  //   return item%2===0
+  // })
+  // const oddNumbers=number.filter((item)=>{
+  //   return item%2==!0
+  // })
+  // console.log("odd numbers=",oddNumbers)
+  // console.log("even numbers=",evenNumbers)
+  // const arrNumber=[1,9,6,4]
+  // const sumOfNumbers=(arr)=>{
+  //   return arr.reduce((pre,cur)=>{
+  // return pre+cur
+  //   })
+  // }
+  // console.log("sum of numbers",sumOfNumbers(arrNumber));
+  // const arrNumber = [1, 2, 3, 4, 5, 6, 9, 10];
+  // const missArray = [];
+  // const missValue = (arr) => {
+  //   const minValue = Math.min(...arr);
+  //   const maxValue = Math.max(...arr);
+  //   for (let i = minValue; i <= maxValue; i++) { // Include the maxValue in the loop
+  //     if (arr.indexOf(i) < 0) {
+  //       missArray.push(i);
+  //     }
+  //   }
+  //   return missArray;
+  // }
+
+  // console.log(missValue(arrNumber));
+
   const twoColors = {
     "0%": "#87d068",
     "100%": "#87d068",
@@ -96,38 +129,77 @@ function DashboardWidget() {
     {
       title: "Member",
       dataIndex: "name",
-      width: "20%",
-      sorter: (a, b) => a.name - b.name,
+      width: "10%",
+      render: (_, record) => (
+        <>
+          <span style={{ fontSize: "0.8rem" }}>{record.name}</span>
+        </>
+      ),
     },
     {
-      title: "Clock-in",
+      title: (
+        <span style={{ fontSize: "0.8rem" }}>
+          Clock-in
+          <BsArrowDownUp style={{ marginLeft: 8 }} />
+        </span>
+      ),
       dataIndex: "age",
-      sorter: (a, b) => a.age - b.age,
+      width: "8%",
     },
     {
-      title: "Active Time(hrs)",
+      // title: "Active Time(hrs)",
+      title: (
+        <span style={{ fontSize: "0.8rem" }}>
+          Active Time(hrs)
+          <BsArrowDownUp style={{ marginLeft: 8 }} />
+        </span>
+      ),
       dataIndex: "address",
-      sorter: (a, b) => a.address - b.address,
-      //width: '20%',
+      width: "12%",
     },
     {
-      title: "Log time (hrs)",
+      //title: "Log time (hrs)",
+      title: (
+        <span style={{ fontSize: "0.8rem" }}>
+          Log time (hrs)
+          <BsArrowDownUp style={{ marginLeft: 8 }} />
+        </span>
+      ),
       dataIndex: "logtime",
-      sorter: (a, b) => a.logtime - b.logtime,
+      width: "12%",
     },
     {
-      title: "Breake time (hrs)",
+      // title: "Breake time (hrs)",
+      title: (
+        <span style={{ fontSize: "0.8rem" }}>
+          Breake time (hrs)
+          <BsArrowDownUp style={{ marginLeft: 8 }} />
+        </span>
+      ),
       dataIndex: "breaktime",
-      sorter: (a, b) => a.breaktime - b.breaktime,
+      width: "13%",
     },
     {
-      title: "Clock out ",
+      //title: "Clock out ",
+      title: (
+        <span style={{ fontSize: "0.8rem" }}>
+          Clock out
+          <BsArrowDownUp style={{ marginLeft: 8 }} />
+        </span>
+      ),
       dataIndex: "clockout",
-      sorter: (a, b) => a.clockout - b.clockout,
+      width: "10%",
     },
     {
-      title: "Remaining time ",
+      // title: "Remaining time ",
+      title: (
+        <span style={{ fontSize: "0.8rem" }}>
+          Remaining time
+          <BsArrowDownUp style={{ marginLeft: 8 }} />
+        </span>
+      ),
       dataIndex: "remainingtime",
+      width: "12%",
 
       render: (_, record) => (
         <>
@@ -136,7 +208,6 @@ function DashboardWidget() {
           </Button>
         </>
       ),
-      sorter: (a, b) => a.remainingtime - b.remainingtime,
     },
   ];
   const tabledata = [
@@ -225,78 +296,86 @@ function DashboardWidget() {
   const widgetList = [
     {
       id: 1,
-      icon: (
-        <FaUserGroup size={20} style={{ color: "#809fff" }} />
-      ),
-      iconDivColor:"#bfcfff",
+      icon: <FaUserGroup size={20} style={{ color: "#809fff" }} />,
+      iconDivColor: "#bfcfff",
       contentTitle: "Total Team Members",
-      contentNum:"10",
+      contentNum: "10",
       statsIcon: <FaArrowTrendUp />,
       statsNum: "8.5%",
       statsColor: "rgb(8, 206, 117)",
-      statsContent: "Up from yesterday"
-
+      statsContent: "Up from yesterday",
     },
     {
       id: 2,
-      icon: (
-        <IoCubeSharp size={20} style={{ color: "#ffa500" }} />
-      ),
-      iconDivColor:"rgb(250, 226, 166)",
+      icon: <IoCubeSharp size={20} style={{ color: "#ffa500" }} />,
+      iconDivColor: "rgb(250, 226, 166)",
       contentTitle: "Active Members",
-      contentNum:"120",
-      statsIcon: <FaArrowTrendDown  />,
+      contentNum: "120",
+      statsIcon: <FaArrowTrendDown />,
       statsNum: "4.3%",
       statsColor: "red",
-      statsContent: "Down from yesterday"
-
+      statsContent: "Down from yesterday",
     },
     {
       id: 3,
-      icon: (
-        <BsGraphUp size={20} style={{ color: "rgb(8, 206, 117)" }} />
-      ),
-      iconDivColor:"rgb(185, 239, 193)",
+      icon: <BsGraphUp size={20} style={{ color: "rgb(8, 206, 117)" }} />,
+      iconDivColor: "rgb(185, 239, 193)",
       contentTitle: "On Break",
-      contentNum:"05",
+      contentNum: "05",
       statsIcon: <FaArrowTrendDown />,
       statsNum: "4.3%",
       statsColor: "red",
-      statsContent: "Down from yesterday"
-
+      statsContent: "Down from yesterday",
     },
     {
       id: 4,
-      icon: (
-        <IoCubeSharp size={20} style={{ color: "#ffa500" }} />
-      ),
-      iconDivColor:"rgb(250, 226, 166)",
+      icon: <IoCubeSharp size={20} style={{ color: "#ffa500" }} />,
+      iconDivColor: "rgb(250, 226, 166)",
       contentTitle: "Clocked out Members",
-      contentNum:"10",
+      contentNum: "10",
       statsIcon: <FaArrowTrendDown />,
       statsNum: "4.3%",
       statsColor: "red",
-      statsContent: "Down from yesterday"
-
+      statsContent: "Down from yesterday",
     },
     {
       id: 5,
       icon: (
-        <PiClockCounterClockwiseBold size={20} style={{ color: "rgb(237, 156, 124)" }} />
+        <PiClockCounterClockwiseBold
+          size={20}
+          style={{ color: "rgb(237, 156, 124)" }}
+        />
       ),
       iconDivColor: "rgb(241, 210, 198)",
       contentTitle: "Yet to start members",
-      contentNum:"120",
+      contentNum: "120",
       statsIcon: <FaArrowTrendUp />,
       statsNum: "8.5%",
       statsColor: "rgb(8, 206, 117)",
-      statsContent: "Up from yesterday"
-
+      statsContent: "Up from yesterday",
     },
   ];
-
   return (
     <div className="mainDiv" style={{ padding: "0 10px", marginTop: "2rem" }}>
+      <div style={{display: "flex",gap:"10px" ,marginBottom:"0.5rem" }}>
+          <div  style={{fontWeight: "bold"  }}>
+            Counter:{" "}
+          </div>
+          <div>
+            {counter}
+            </div>
+        </div>
+      <div>
+        
+        <div className="iconDiv">
+          <Button type="primary" onClick={increment}>
+            Increment
+          </Button>
+          <Button style={{backgroundColor:"lightgray"}} onClick={decrement}>
+            Decrement
+          </Button>
+        </div>
+      </div>
       <div>
         <h4>Dashboard</h4>
       </div>
@@ -311,7 +390,10 @@ function DashboardWidget() {
         </div>
         <div className="cardDiv">
           <div className="cardWidget">
-            <SlCalender type="large" style={{color:"gray",fontWeight:"bold"}}/>
+            <SlCalender
+              type="large"
+              style={{ color: "gray", fontWeight: "bold" }}
+            />
             <div className="innercontent">Today, 12, June</div>
             <div>
               <SlArrowLeft size={7} /> <SlArrowRight size={7} />
@@ -333,25 +415,28 @@ function DashboardWidget() {
 
       <div className="mainWidgetDiv">
         {/* --------Widget----- */}
-        {widgetList.map((data)=>(
-        <div className="widgetDiv" key={data.id}>
-          <div className="innnerWidgetDiv">
-            <div className="widgetIcon" style={{backgroundColor: data.iconDivColor}}>
-              {data.icon}
+        {widgetList.map((data) => (
+          <div className="widgetDiv" key={data.id}>
+            <div className="innnerWidgetDiv">
+              <div
+                className="widgetIcon"
+                style={{ backgroundColor: data.iconDivColor }}
+              >
+                {data.icon}
+              </div>
+              <div className="widgetContent">
+                <div className="widgetContentTitle">{data.contentTitle}</div>
+                <div className="widgetContentNum">{data.contentNum}</div>
+              </div>
             </div>
-            <div className="widgetContent">
-              <div className="widgetContentTitle">{data.contentTitle}</div>
-              <div className="widgetContentNum">{data.contentNum}</div>
+            <div className="widgetStatsDiv">
+              <span className="statsColor" style={{ color: data.statsColor }}>
+                {data.statsIcon}
+                &nbsp;{data.statsNum}
+              </span>{" "}
+              {data.statsContent}
             </div>
           </div>
-          <div className="widgetStatsDiv">
-            <span className="statsColor" style={{color: data.statsColor}}>
-              {data.statsIcon}
-              &nbsp;{data.statsNum}
-            </span>{" "}
-            {data.statsContent}
-          </div>
-        </div>
         ))}
         {/* --------------------- */}
       </div>
@@ -505,8 +590,8 @@ function DashboardWidget() {
               <div>
                 <List
                   dataSource={timeList}
-                  renderItem={(item) => (
-                    <List.Item key={item.id}>
+                  renderItem={(item, index) => (
+                    <List.Item key={index} data={item.id}>
                       <div
                         style={{
                           display: "flex",
@@ -553,4 +638,13 @@ function DashboardWidget() {
   );
 }
 
-export default DashboardWidget;
+const mapStateToProps = (state) => ({
+  counter: state.counter,
+});
+
+const mapDispatchToProps = {
+  increment,
+  decrement,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardWidget);
